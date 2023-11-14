@@ -1,6 +1,7 @@
 package com.daixin.schedule.models;
 
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.ManyToMany;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class Employee {
     private String name;
     private int hours;
 
+    @ManyToMany
     private final List<WorkStation> workStation = new ArrayList<>();
 
     //Constructors

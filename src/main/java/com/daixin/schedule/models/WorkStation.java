@@ -1,7 +1,10 @@
 package com.daixin.schedule.models;
 
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.ManyToMany;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class WorkStation {
@@ -9,6 +12,8 @@ public class WorkStation {
     private int id;
     private String name;
     private String shortHand;
+    @ManyToMany(mappedBy = "workstation")
+    private final List<Employee> employeeList = new ArrayList<>();
 
     // Constructor
     public WorkStation () {}
