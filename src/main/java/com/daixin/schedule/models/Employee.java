@@ -12,6 +12,8 @@ public class Employee {
     private int id;
     private String name;
     private int hours;
+    private boolean isActive;
+
 
     @ManyToMany
     private final List<WorkStation> workStation = new ArrayList<>();
@@ -60,4 +62,18 @@ public class Employee {
     public void setHours(int hours) {
         this.hours = hours;
     }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public List<WorkStation> getWorkStation() {
+        return workStation;
+    }
+
+
 }
