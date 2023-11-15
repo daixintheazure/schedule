@@ -1,29 +1,43 @@
 package com.daixin.schedule.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.ManyToMany;
-
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Employee {
+    @Id
     @GeneratedValue
     private int id;
+    @NotBlank(message = "Name is required!")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters!")
     private String name;
+    @NotBlank(message = "Hours are required!")
+    @NotNull
     private int hours;
     private boolean isActive;
+    private boolean isTraining;
 
 
-    @ManyToMany
-    private final List<WorkStation> workStation = new ArrayList<>();
+    @ManyToOne
+    private WorkStation workStation;
+
+
+//    @ManyToMany
+//    private final List<WorkStation> workStation = new ArrayList<>();
 
     //Constructors
 
     public Employee() {}
 
-    public Employee(String name) {
+    public Employee(String name, Boolean isActive, Boolean isTraining) {
         this.name = name;
+        this.isActive = isActive;
+        this.isTraining = isTraining;
     }
 
     //Hash mapping
@@ -71,9 +85,17 @@ public class Employee {
         isActive = active;
     }
 
-    public List<WorkStation> getWorkStation() {
-        return workStation;
+    public boolean isTraining() {
+        return isTraining;
     }
+
+    public void setTraining(boolean training) {
+        isTraining = training;
+    }
+
+//    public List<WorkStation> getWorkStation() {
+//        return workStation;
+//    }
 
 
 }
