@@ -5,7 +5,22 @@
 <body>
 <h1></h1>
 <header th:replace="fragments :: header"></header>
+<nav>
+    <ul>
+        <li><a href="workStations/add">Add Station</a></li>
+    </ul>
+</nav>
 
+<table>
+    <thead>
+    <tr>
+        <th>Work Stations</th>
+    </tr>
+    </thead>
+    <tr th:each="workStation : ${workStations}">
+        <td th:text="${workStation.name}"></td>
+    </tr>
+</table>
 
 </body>
 </html>

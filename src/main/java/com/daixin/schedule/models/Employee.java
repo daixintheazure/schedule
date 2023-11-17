@@ -16,7 +16,7 @@ public class Employee {
     @NotBlank(message = "Name is required!")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters!")
     private String name;
-    @NotBlank(message = "Hours are required!")
+    //@NotBlank(message = "Hours are required!")
     @NotNull
     private int hours;
     private boolean isActive;
@@ -34,8 +34,9 @@ public class Employee {
 
     public Employee() {}
 
-    public Employee(String name, Boolean isActive, Boolean isTraining) {
+    public Employee(String name, int hours, boolean isActive, boolean isTraining) {
         this.name = name;
+        this.hours = hours;
         this.isActive = isActive;
         this.isTraining = isTraining;
     }

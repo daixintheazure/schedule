@@ -5,7 +5,21 @@
 <body>
 <h1></h1>
 <header th:replace="fragments :: header"></header>
-
+<nav>
+    <ul>
+        <li><a href="employees/add">Add Employee</a></li>
+    </ul>
+</nav>
+<table>
+    <thead>
+    <tr>
+        <th>Employees</th>
+    </tr>
+    </thead>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.name}"></td>
+    </tr>
+</table>
 
 </body>
 </html>

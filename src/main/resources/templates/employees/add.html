@@ -6,6 +6,33 @@
 <h1></h1>
 <header th:replace="fragments :: header"></header>
 
+<form method="post">
+    <div>
+        <label>Name
+            <input th:field="${employee.name}">
+        </label>
+        <p class="error" th:errors="${employee.name}"></p>
+        <label>Hours
+            <input th:field="${employee.hours}">
+        </label>
+        <p class="error" th:errors="${employee.hours}"></p>
+    </div>
+    <div>
+        <label>Active</label>
+        <input type="checkbox"  th:checked="${employee.isActive}" name="Active">
+        <label>Training</label>
+        <input type="checkbox" th:checked="${employee.isTraining}" name="Training">
+    </div>
+    <div>
+        <section th:each="workStation : ${workStations}">
+            <label th:text="${workStation.name}"></label>
+            <input type="checkbox" th:value="${workStation}">
+        </section>
+    </div>
+    <div>
+        <input type="submit" value="Add" >
+    </div>
+</form>
 
 </body>
 </html>

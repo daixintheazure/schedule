@@ -6,6 +6,22 @@
 <h1></h1>
 <header th:replace="fragments :: header"></header>
 
+<form method="post">
+    <div>
+        <label>Name
+            <input th:field="${workStation.name}">
+        </label>
+        <p class="error" th:errors="${workStation.name}"></p>
+        <label>Short Name
+            <input th:field="${workStation.shortHand}">
+        </label>
+        <p class="error" th:errors="${workStation.shortHand}"></p>
+    </div>
+    <div>
+        <input type="submit" value="Add" >
+    </div>
+</form>
+
 
 </body>
 </html>
