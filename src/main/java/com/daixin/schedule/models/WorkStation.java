@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 @Entity
@@ -17,19 +18,18 @@ public class WorkStation {
     @NotBlank(message = "Name is required!")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
-    @NotNull
-    @NotBlank(message = "ShortHand is required!")
-    @Size(min = 1, max = 3, message = "ShortHand must be between 1 and 3 characters!")
-    private String shortHand;
-    @OneToMany(mappedBy = "workStation")
-    private final List<Employee> employeeList = new ArrayList<>();
+//    @NotNull
+//    @NotBlank(message = "ShortHand is required!")
+//    @Size(min = 1, max = 3, message = "ShortHand must be between 1 and 3 characters!")
+    private char shortHand;
+    @ManyToOne
+    private Employee employee;
 
     // Constructor
     public WorkStation () {}
 
-    public WorkStation(String name, String shortHand) {
+    public WorkStation(String name) {
         this.name = name;
-        this.shortHand = shortHand;
     }
 
     // Hash
@@ -59,11 +59,10 @@ public class WorkStation {
         this.name = name;
     }
 
-    public String getShortHand() {
+    public char getShortHand() {
+        this.name = name.toUpperCase();
+        this.shortHand = name.charAt(0);
         return shortHand;
     }
 
-    public void setShortHand(String shortHand) {
-        this.shortHand = shortHand;
-    }
 }

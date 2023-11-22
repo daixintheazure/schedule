@@ -7,15 +7,11 @@
 <header th:replace="fragments :: header"></header>
 
 <form method="post">
-    <div>
+    <div class="form-group">
         <label>Name
-            <input th:field="${workStation.name}">
+            <input th:field="${workStation.name}" class="form-control">
         </label>
         <p class="error" th:errors="${workStation.name}"></p>
-        <label>Short Name
-            <input th:field="${workStation.shortHand}">
-        </label>
-        <p class="error" th:errors="${workStation.shortHand}"></p>
     </div>
     <div>
         <input type="submit" value="Add" >

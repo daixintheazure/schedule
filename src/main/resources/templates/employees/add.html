@@ -7,30 +7,31 @@
 <header th:replace="fragments :: header"></header>
 
 <form method="post">
-    <div>
+    <div class="form-group">
         <label>Name
-            <input th:field="${employee.name}">
+            <input th:field="${employee.name}" class="form-control">
         </label>
         <p class="error" th:errors="${employee.name}"></p>
         <label>Hours
-            <input th:field="${employee.hours}">
+            <input th:field="${employee.hours}" class="form-control">
         </label>
         <p class="error" th:errors="${employee.hours}"></p>
     </div>
-    <div>
+    <div class="form-group">
         <label>Active</label>
         <input type="checkbox"  th:checked="${employee.isActive}" name="Active">
         <label>Training</label>
         <input type="checkbox" th:checked="${employee.isTraining}" name="Training">
     </div>
-    <div>
-        <section th:each="workStation : ${workStations}">
-            <label th:text="${workStation.name}"></label>
-            <input type="checkbox" th:value="${workStation}">
-        </section>
+    <div class="form-group">
+        <label th:for="workstation">Workstations</label>
+        <th:block th:each="workstation : ${workStations}">
+            <input type="checkbox" name="workstation" th:value="${workstation.id}">
+            <label th:text="${workstation.name}"></label>
+        </th:block>
     </div>
     <div>
-        <input type="submit" value="Add" >
+        <input type="submit" value="Add" class="btn btn-primary">
     </div>
 </form>
 

@@ -23,12 +23,12 @@ public class Employee {
     private boolean isTraining;
 
 
-    @ManyToOne
-    private WorkStation workStation;
 
 
-//    @ManyToMany
-//    private final List<WorkStation> workStation = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "work_station_id")
+    private List<WorkStation> workStation = new ArrayList<>();
 
     //Constructors
 
@@ -94,9 +94,13 @@ public class Employee {
         isTraining = training;
     }
 
-//    public List<WorkStation> getWorkStation() {
-//        return workStation;
-//    }
+    public List<WorkStation> getWorkStation() {
+        return workStation;
+    }
+
+    public void setWorkStation(List<WorkStation> workStation) {
+        this.workStation = workStation;
+    }
 
 
 }

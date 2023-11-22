@@ -11,7 +11,7 @@
     </ul>
 </nav>
 
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
         <th>Work Stations</th>
@@ -19,6 +19,7 @@
     </thead>
     <tr th:each="workStation : ${workStations}">
         <td th:text="${workStation.name}"></td>
+        <td th:text="${workStation.shortHand}"></td>
     </tr>
 </table>
 

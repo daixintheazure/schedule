@@ -10,7 +10,13 @@
         <li><a href="employees/add">Add Employee</a></li>
     </ul>
 </nav>
-<table>
+<table class="table table-striped">
+    <tr>
+        <th>Employee</th>
+        <th>Active</th>
+        <th>Training</th>
+        <th>Work Stations</th>
+    </tr>
     <thead>
     <tr>
         <th>Employees</th>
@@ -18,6 +24,16 @@
     </thead>
     <tr th:each="employee : ${employees}">
         <td th:text="${employee.name}"></td>
+        <td th:text="${employee.isActive}"></td>
+        <td th:text="${employee.isTraining}"></td>
+        <td>
+           <li th:each="workstation : ${employee.getWorkStation}">
+               <a th:text="${workstation.name}"></a>
+           </li>
+        </td>
+        <td>
+            <a th:href="@{/employees/edit/{id}(id=${employee.id})}">Edit</a>
+        </td>
     </tr>
 </table>
 
